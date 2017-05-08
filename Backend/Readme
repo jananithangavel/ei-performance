@@ -1,0 +1,8 @@
+Starting the backend
+	./netty_start.sh ${threadsleep}
+	eg: ./netty_start.sh 100
+
+GC Logs
+* Runtime GC log will get recorded to the ./logs/nettygc.log file and when restarting the sever it will get moved to ./tmp/ directory.
+
+Server logs will get recoreded at ./logs/netty.out
