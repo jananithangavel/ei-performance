@@ -1,0 +1,9 @@
+Host esbperfbackend
+     HostName 192.168.48.206
+     User ubuntu
+     IdentityFile ~/key/ei.pem
+Host esbperfesb
+     HostName 192.168.48.203
+     User ubuntu
+     IdentityFile ~/key/ei.pem
+
