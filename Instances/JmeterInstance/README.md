@@ -31,7 +31,7 @@ Note: Script refer path for JDK as "software/java". Update path to JDK in script
 
 2. Add instance hostname in to /etc/hosts
 
-3. Add server in to a folder (Ex: ~/key) and give permission as "chmod +x keyFile"
+3. Add server key in to a folder (Ex: ~/key) and give permission as "chmod 600 keyFile"
 
 4. Edit config file with respective IPs. Give file path to key file.
 

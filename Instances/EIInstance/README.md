@@ -33,7 +33,7 @@ Note: Script refer path for JDK as "software/java". Update path to JDK in script
 
 3. Add following line in to /etc/hosts with respective ip of EI server instance
 
-`netty 192.168.*.*`
+`192.168.*.* netty`
 
 4. EI pack should be downloaded and update path to pack in script.
 
