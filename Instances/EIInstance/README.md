@@ -31,7 +31,7 @@ Note: Script refer path for JDK as "software/java". Update path to JDK in script
 
 2. Add instance hostname in to /etc/hosts
 
-3. Add following line in to /etc/hosts with respective ip of EI server instance
+3. Add following line in to /etc/hosts with respective ip of backend server instance
 
 `192.168.*.* netty`
 
