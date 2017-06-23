@@ -1,46 +1,27 @@
+
 #!/bin/bash
-mkdir tmp
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_131
 
-product="wso2ei-6.1.1" #"wso2esb-5.0.0"
-if [ -f ~/software/java/jdk-8u131-linux-x64.tar.gz ]; then
-  echo "Installing Java..."
-  yes | sudo ./install-java.sh -f ~/software/java/jdk-8u131-linux-x64.tar.gz
+if pgrep -f "carbon" > /dev/null; then
+echo "Shutting down EI"
+if [[ $1 == *"wso2ei"* ]] ; then
+    ~/product/$1/bin/integrator.sh stop
 else
-  echo "JDK not available !!!"
+    ~/product/$1/bin/wso2server.sh stop
+fi
+    sleep 30
 fi
 
-if [ -f ~/software/$product.zip ]; then
-if [ -d ~/product/$product/ ]; then
-    echo "WSO2 EI pack available!!"
-else
-    mkdir ~/product
-    unzip ~/software/$product.zip -d ~/product
-fi
-else
-   echo "WSO2 EI pack is not available!!"
+if [[ -f ~/product/$1/repository/logs/gc.log ]]; then
+    echo "GC Log exists. Moving to /tmp"
+    mv ~/product/$1/repository/logs/gc.log ~/tmp/
 fi
 
-if [ -f ~/software/ESBPerformanceTestArtifacts_1.0.0.car ]; then
-    echo "Deploying CAPP!!"
-    mv ~/software/ESBPerformanceTestArtifacts_1.0.0.car ~/product/$product/repository/deployment/server/carbonapps
+echo "Starting EI"
+if [ $1 == "wso2ei-6.1.1" ] ; then
+    ~/product/$1/bin/integrator.sh start
 else
-   echo "CAPP is not available!!"
+    ~/product/$1/bin/wso2server.sh start
 fi
 
-mkdir /product/$product/repository/deployment/server/resources
-
-if [ -f ~/software/store.jks ]; then
-    echo "Moving store.jks file"
-    mv ~/software/store.jks ~/product/$product/repository/deployment/server/resources
-else
-   echo "store.jks is not available!!"
-fi
-
-echo "Installing sar" 
-yes | sudo apt-get install sysstat
-sudo sed -i 's|ENABLED=.*|ENABLED="true"|' /etc/default/sysstat
-sudo service sysstat restart
-
-
-
-sleep 1
+sleep 60
