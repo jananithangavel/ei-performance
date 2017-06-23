@@ -27,7 +27,7 @@ else
    echo "CAPP is not available!!"
 fi
 
-mkdir /product/$product/repository/deployment/server/resources
+mkdir ~/product/$product/repository/deployment/server/resources
 
 if [ -f ~/software/store.jks ]; then
     echo "Moving store.jks file"
