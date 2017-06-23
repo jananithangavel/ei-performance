@@ -24,4 +24,9 @@ else
    echo "jmeter is not available!!"
 fi
 
+echo "Installing sar" 
+yes | sudo apt-get install sysstat
+sudo sed -i 's|ENABLED=.*|ENABLED="true"|' /etc/default/sysstat
+sudo service sysstat restart
+
 sleep 1
