@@ -18,7 +18,7 @@ if [[ -f ~/product/$1/repository/logs/gc.log ]]; then
 fi
 
 echo "Starting EI"
-if [ $1 == "wso2ei-6.1.1" ] ; then
+if [[ $1 == *"wso2ei"* ]] ; then
     ~/product/$1/bin/integrator.sh start
 else
     ~/product/$1/bin/wso2server.sh start
